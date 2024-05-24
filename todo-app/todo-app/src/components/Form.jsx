@@ -1,5 +1,7 @@
 // The input form
 
+'use client';
+
 function Form() {
     const handleSubmit = (event) => {
         event.preventDefault(); // prevents form submitting and reloading the entire app

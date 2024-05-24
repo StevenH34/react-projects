@@ -1,4 +1,4 @@
-function TodoHero({todosComplete, totalTodos}) {
+function TodoHero({todosCompleted, totalTodos}) {
     return (
         <section>
             <div>
@@ -6,7 +6,7 @@ function TodoHero({todosComplete, totalTodos}) {
                 <p>Keep it up</p>
             </div>
             <div>
-                {todosComplete}/{totalTodos}
+                {todosCompleted}/{totalTodos}
             </div>
         </section>
     );
