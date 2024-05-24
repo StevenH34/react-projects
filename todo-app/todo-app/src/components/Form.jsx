@@ -26,7 +26,7 @@ function Form({setTodos}) {
                 />
             </label>
             <button>
-                <span className="visually-hidden">Submit</span>
+                <span>Submit</span>
             </button>
         </form>
     );
