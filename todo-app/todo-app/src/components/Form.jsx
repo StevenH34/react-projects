@@ -1,10 +1,17 @@
 // The input form
-
 'use client';
 
-function Form() {
+function Form({setTodos}) {
     const handleSubmit = (event) => {
         event.preventDefault(); // prevents form submitting and reloading the entire app
+        const value = event.target.todo.value; // get value from input
+        const newTodo = {
+            title: value,
+            id: self.crypto.randomUUID(),
+            isCompleted: false
+        };
+        setTodos((prevTodos) => [ ...prevTodos, newTodo ]);
+
         event.target.reset();   // reset form
     };
 
@@ -20,9 +27,6 @@ function Form() {
             </label>
             <button>
                 <span className="visually-hidden">Submit</span>
-                <svg>
-                    <path d=" "/>
-                </svg>
             </button>
         </form>
     );

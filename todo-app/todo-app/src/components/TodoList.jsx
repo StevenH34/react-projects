@@ -1,9 +1,11 @@
-function TodoList({todos}) {
+function TodoList({todos, setTodos}) {
     return (
         <ol className="todo-list">
             {todos && todos.length > 0 ? (
-                todos.map((item, index) => <Item key={index} item={item} />)
-            ): (
+                todos.map((item, index) => (
+                    <Item key={index} item={item} setTodos={setTodos} /> 
+                ))
+            ) : (
                 <p>No Todos</p>
             )}
         </ol>
@@ -11,27 +13,27 @@ function TodoList({todos}) {
 }
 
 // Item component
-function Item({item}) {
+function Item({item, setTodos}) {
+    const completeTodo = () => {
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) =>
+                todo.id === item.id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+            )
+        );
+    };
     return (
         <li id={item?.id} className="todo-item">
-            <button>
-                <svg>
-                    <circle cx="12" cy="12" r="10" fillRule="nonzero"/>
-                </svg>
-                <p>{item?.title}</p>
+            <button className="todo-item-left" onClick={completeTodo}>
+                <p style={ item.isCompleted ? { textDecoration: "line-through" } : {} }>
+                    {item?.title}
+                </p>
             </button>
             <div className="todo-item-right">
                 <button>
                     <span className="visually-hidden">Edit</span>
-                    <svg>
-                        <path d=" "/>
-                    </svg>
                 </button>
                 <button>
                     <span className="visually-hidden">Delete</span>
-                    <svg>
-                        <path d=" "/>
-                    </svg>
                 </button>
             </div>
         </li>
