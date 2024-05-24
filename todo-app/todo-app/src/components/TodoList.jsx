@@ -21,6 +21,11 @@ function Item({item, setTodos}) {
             )
         );
     };
+
+    const handleDelete = () => {
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== item.id));
+    };
+
     return (
         <li id={item?.id} className="todo-item">
             <button className="todo-item-left" onClick={completeTodo}>
@@ -32,7 +37,7 @@ function Item({item, setTodos}) {
                 <button>
                     <span className="visually-hidden">Edit</span>
                 </button>
-                <button>
+                <button onClick={handleDelete}>
                     <span className="visually-hidden">Delete</span>
                 </button>
             </div>
